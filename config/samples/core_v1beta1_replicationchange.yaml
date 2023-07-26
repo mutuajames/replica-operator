@@ -1,0 +1,13 @@
+apiVersion: core.my.domain/v1beta1
+kind: ReplicationChange
+metadata:
+  labels:
+    app.kubernetes.io/name: replicationchange
+    app.kubernetes.io/instance: replicationchange-sample
+    app.kubernetes.io/part-of: replica-operator1
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: replica-operator1
+  name: replicationchange-sample
+spec:
+  replicas: 2
+  image: 
