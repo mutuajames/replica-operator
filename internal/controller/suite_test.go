@@ -29,8 +29,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/envtest"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
-
-	corev1beta1 "github.com/mutuajames/replica-operator/api/v1beta1"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -53,7 +51,7 @@ var _ = BeforeSuite(func() {
 	By("bootstrapping test environment")
 	testEnv = &envtest.Environment{
 		CRDDirectoryPaths:     []string{filepath.Join("..", "..", "config", "crd", "bases")},
-		ErrorIfCRDPathMissing: true,
+		ErrorIfCRDPathMissing: false,
 	}
 
 	var err error
@@ -61,9 +59,6 @@ var _ = BeforeSuite(func() {
 	cfg, err = testEnv.Start()
 	Expect(err).NotTo(HaveOccurred())
 	Expect(cfg).NotTo(BeNil())
-
-	err = corev1beta1.AddToScheme(scheme.Scheme)
-	Expect(err).NotTo(HaveOccurred())
 
 	//+kubebuilder:scaffold:scheme
 

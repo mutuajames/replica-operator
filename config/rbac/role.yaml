@@ -5,9 +5,9 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - core.my.domain
+  - mutuajames.github.io.my.domain
   resources:
-  - replicationchanges
+  - replicachangelisteners
   verbs:
   - create
   - delete
@@ -17,15 +17,15 @@ rules:
   - update
   - watch
 - apiGroups:
-  - core.my.domain
+  - mutuajames.github.io.my.domain
   resources:
-  - replicationchanges/finalizers
+  - replicachangelisteners/finalizers
   verbs:
   - update
 - apiGroups:
-  - core.my.domain
+  - mutuajames.github.io.my.domain
   resources:
-  - replicationchanges/status
+  - replicachangelisteners/status
   verbs:
   - get
   - patch

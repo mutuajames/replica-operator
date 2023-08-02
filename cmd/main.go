@@ -31,7 +31,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	corev1beta1 "github.com/mutuajames/replica-operator/api/v1beta1"
 	"github.com/mutuajames/replica-operator/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
@@ -44,7 +43,6 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
-	utilruntime.Must(corev1beta1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -89,11 +87,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err = (&controller.ReplicationChangeReconciler{
+	if err = (&controller.ReplicaChangeListenerReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "ReplicationChange")
+		setupLog.Error(err, "unable to create controller", "controller", "ReplicaChangeListener")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder

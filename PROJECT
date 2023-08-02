@@ -8,13 +8,9 @@ layout:
 projectName: replica-operator1
 repo: github.com/mutuajames/replica-operator
 resources:
-- api:
-    crdVersion: v1
-    namespaced: true
-  controller: true
+- controller: true
   domain: my.domain
-  group: core
-  kind: ReplicationChange
-  path: github.com/mutuajames/replica-operator/api/v1beta1
+  group: mutuajames.github.io
+  kind: ReplicaChangeListener
   version: v1beta1
 version: "3"
