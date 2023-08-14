@@ -1,8 +1,8 @@
-# replica-operator1
-// TODO(user): Add simple overview of use/purpose
+# replica-operator
+The operator checks for updates in the number of replicas for a particular deployment.
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+This operator returns a message every time the number of deployments change.
 
 ## Getting Started
 You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.
@@ -18,13 +18,13 @@ kubectl apply -f config/samples/
 2. Build and push your image to the location specified by `IMG`:
 
 ```sh
-make docker-build docker-push IMG=<some-registry>/replica-operator1:tag
+make docker-build docker-push IMG=mutuajames/replica-operator/replica-operator:tag
 ```
 
 3. Deploy the controller to the cluster with the image specified by `IMG`:
 
 ```sh
-make deploy IMG=<some-registry>/replica-operator1:tag
+make deploy IMG=mutuajames/replica-operator/replica-operator:tag
 ```
 
 ### Uninstall CRDs

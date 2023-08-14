@@ -37,6 +37,8 @@ type ReplicaChangeListenerReconciler struct {
 	Scheme *runtime.Scheme
 }
 
+// +kubebuilder:rbac:groups=appsv1,resources=deployments,verbs=get;watch;
+
 func (r *ReplicaChangeListenerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 

@@ -48,7 +48,7 @@ func Test_CheckForChangeInReplicaNumber(t *testing.T) {
 				},
 				ObjectOld: &appsv1.Deployment{
 					Spec: appsv1.DeploymentSpec{
-						Replicas: newReplicaCount,
+						Replicas: oldReplicaCount,
 					},
 				},
 			},

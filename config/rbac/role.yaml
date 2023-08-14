@@ -5,28 +5,9 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - mutuajames.github.io.my.domain
+  - appsv1
   resources:
-  - replicachangelisteners
+  - deployments
   verbs:
-  - create
-  - delete
   - get
-  - list
-  - patch
-  - update
   - watch
-- apiGroups:
-  - mutuajames.github.io.my.domain
-  resources:
-  - replicachangelisteners/finalizers
-  verbs:
-  - update
-- apiGroups:
-  - mutuajames.github.io.my.domain
-  resources:
-  - replicachangelisteners/status
-  verbs:
-  - get
-  - patch
-  - update
