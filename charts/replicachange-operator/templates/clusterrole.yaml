@@ -1,0 +1,16 @@
+{{- if .Values.clusterRole.create }}
+apiVersion: apps/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "replicachange-operator.fullname" . }}
+  labels:
+    {{- include "replicachange-operator.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - deployments
+    verbs:
+      - get
+      - watch
+{{- end }}
