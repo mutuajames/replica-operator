@@ -18,8 +18,8 @@ package controller
 
 import (
 	"context"
-	"fmt"
 
+	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
@@ -35,6 +35,7 @@ import (
 type ReplicaChangeListenerReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
+	Log    logr.Logger
 }
 
 // +kubebuilder:rbac:groups=appsv1,resources=deployments,verbs=get;watch;
@@ -61,8 +62,10 @@ func (r *ReplicaChangeListenerReconciler) CheckForChangeInReplicaNumber(event ev
 	newDeployment := event.ObjectNew.(*appsv1.Deployment)
 	oldDeployment := event.ObjectOld.(*appsv1.Deployment)
 
+	log := r.Log.WithValues("deployment", newDeployment.Name)
+
 	if *newDeployment.Spec.Replicas != *oldDeployment.Spec.Replicas {
-		fmt.Printf("Replica number for %s changed from %d to %d\n", newDeployment.Name, *oldDeployment.Spec.Replicas, *newDeployment.Spec.Replicas)
+		log.Info("Replica number for %s changed from %d to %d\n", newDeployment.Name, *oldDeployment.Spec.Replicas, *newDeployment.Spec.Replicas)
 		return true
 	}
 	return false
