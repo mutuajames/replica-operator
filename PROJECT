@@ -5,7 +5,7 @@
 domain: my.domain
 layout:
 - go.kubebuilder.io/v4
-projectName: replica-operator1
+projectName: replica-operator
 repo: github.com/mutuajames/replica-operator
 resources:
 - controller: true
